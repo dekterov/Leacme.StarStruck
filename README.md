@@ -5,6 +5,7 @@
 This application features the ability to display a star with neighbouring planets.
 
 ![][image_screenshot]
+![index](https://user-images.githubusercontent.com/6654513/71704148-cbc0ab00-2d95-11ea-8a2b-d376e53f52e6.png)
 
 ## Application Compiling
 
