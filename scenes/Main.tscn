@@ -1,0 +1,66 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://src/Main.cs" type="Script" id=1]
+[ext_resource path="res://scenes/Hud.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/Star.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/Planet2.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/Planet1.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/Planet3.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/Planet4.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/Planet5.tscn" type="PackedScene" id=8]
+
+[sub_resource type="ProceduralSky" id=1]
+
+[sub_resource type="Environment" id=2]
+background_mode = 3
+background_sky = SubResource( 1 )
+background_color = Color( 0.52549, 0.52549, 0.52549, 1 )
+dof_blur_near_distance = 2.41
+
+[node name="Main" type="Spatial"]
+script = ExtResource( 1 )
+
+[node name="Hud" parent="." instance=ExtResource( 2 )]
+
+[node name="sky" type="WorldEnvironment" parent="."]
+environment = SubResource( 2 )
+
+[node name="cam" type="Camera" parent="."]
+transform = Transform( -1.62921e-007, 0.5, -0.866025, 0, 0.866025, 0.5, 1, 8.14604e-008, -1.41093e-007, -8.343, 5.42, 0 )
+
+[node name="Star" parent="." instance=ExtResource( 3 )]
+
+[node name="StarLight" type="OmniLight" parent="."]
+omni_range = 14.1333
+
+[node name="PlanetPivot1" type="Spatial" parent="."]
+
+[node name="Planet" parent="PlanetPivot1" instance=ExtResource( 5 )]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -2, 0, 0 )
+
+[node name="PlanetPivot2" type="Spatial" parent="."]
+
+[node name="Planet" parent="PlanetPivot2" instance=ExtResource( 4 )]
+transform = Transform( 0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -3, 0, 0 )
+
+[node name="PlanetPivot3" type="Spatial" parent="."]
+
+[node name="Planet" parent="PlanetPivot3" instance=ExtResource( 6 )]
+transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -4.2, 0, 0 )
+
+[node name="PlanetPivot4" type="Spatial" parent="."]
+
+[node name="Planet" parent="PlanetPivot4" instance=ExtResource( 7 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -5.6, 0, 0 )
+
+[node name="PlanetPivot5" type="Spatial" parent="."]
+
+[node name="Planet" parent="PlanetPivot5" instance=ExtResource( 8 )]
+transform = Transform( 0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -7.20411, 0, 0 )
+
+[node name="Rings" type="CSGTorus" parent="PlanetPivot5/Planet"]
+transform = Transform( 0.98169, -0.011429, 4.85819e-009, 0.185574, 0.0573832, 0.22558, -0.0429693, -0.013287, 0.974224, 0, 0, 0 )
+inner_radius = 1.1
+outer_radius = 1.7
+sides = 26
+ring_sides = 4
